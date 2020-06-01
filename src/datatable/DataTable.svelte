@@ -276,6 +276,14 @@
           focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
         />
       </div>
+      <div class="flex ml-auto">
+        <button
+          class="text-sm mr-6 bg-gray-300 hover:bg-gray-400 text-gray-800
+          font-semibold py-2 px-4 rounded"
+        >
+          Add new design
+        </button>
+      </div>
     </div>
 
     <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">

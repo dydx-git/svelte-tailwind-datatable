@@ -32,31 +32,25 @@
     // Array of objects
     {
       label: "First Name", // Column name
-      field: "name", // Field name from row
+      field: "fname", // Field name from row
       numeric: false, // Affects sorting
       html: false // Escapes output if false.
     },
     {
       label: "Last Name",
-      field: "price",
+      field: "lname",
       numeric: false,
       html: false
     },
     {
       label: "Age",
-      field: "clientid",
+      field: "age",
       numeric: true,
       html: false
     },
     {
       label: "State",
-      field: "vendorid",
-      numeric: false,
-      html: false
-    },
-    {
-      label: "State",
-      field: "date",
+      field: "state",
       numeric: false,
       html: false
     },
@@ -65,7 +59,7 @@
       field: function(data) {
         return (
           '<div class="py-2">' +
-          '<Button name="editOrderBtn" class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l" name="edit_button">Show dialog</Button>' +
+          '<Button name="editOrderBtn" class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded" name="edit_button">Show dialog</Button>' +
           "</div>"
         );
       },
