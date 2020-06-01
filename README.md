@@ -1,5 +1,3 @@
-_Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)_
-
 This is a fork of [Kiho's datatable component](https://github.com/Kiho/svelte-datatable)
 This uses Tailwindcss and also incorporates a form, this [checkbox](https://github.com/HosseinShabani/svelte-checkbox) and this [select](https://github.com/rob-balfre/svelte-select) component
 
