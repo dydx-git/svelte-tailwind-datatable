@@ -1,11 +1,12 @@
 _Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)_
 
-This is a fork of Svelte's project template to enable usage of Tailwindcss. Refer to https://github.com/sveltejs/template for more info.
+This is a fork of [Kiho's datatable component](https://github.com/Kiho/svelte-datatable)
+This uses Tailwindcss and also incorporates a form, this [checkbox](https://github.com/HosseinShabani/svelte-checkbox) and this [select](https://github.com/rob-balfre/svelte-select) component
 
 To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
 
 ```bash
-npx degit sarioglu/svelte-tailwindcss-template svelte-app
+npx degit dydx-git/svelte-tailwind-datatable svelte-app
 cd svelte-app
 ```
 
