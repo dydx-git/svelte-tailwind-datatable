@@ -1,142 +1,119 @@
 <script>
+  import Select from "svelte-select";
+  import Checkbox from "svelte-checkbox";
+
+  export let submit = () => console.log("Add button was clicked");
+  export let cancel = () => console.log("Cancel button was clicked");
+
+  export let rush = false;
+
+  let handleSelectClient = selectedVal => console.log(selectedClient);
+
+  let clients = [
+    { value: "chocolate", label: "🍫 Chocolate", group: "Sweet" },
+    { value: "pizza", label: "🍕 Pizza", group: "Savory" },
+    { value: "cake", label: "🎂 Cake", group: "Sweet" },
+    { value: "cookies", label: "🍪 Cookies", group: "Savory" },
+    { value: "ice-cream", label: "🍦 Ice Cream", group: "Sweet" }
+  ];
+
+  export let selectedClient = 3;
+
+  let vendors = [
+    { value: "chocolate", label: "🍫 Chocolate", group: "Sweet" },
+    { value: "pizza", label: "🍕 Pizza", group: "Savory" },
+    { value: "cake", label: "🎂 Cake", group: "Sweet" },
+    { value: "cookies", label: "🍪 Cookies", group: "Savory" },
+    { value: "ice-cream", label: "🍦 Ice Cream", group: "Sweet" }
+  ];
+
+  export let selectedVendor = undefined;
+
   export let orderName = "";
   export let price = "";
 </script>
 
-<form class="container mx-auto my-32 w-full max-w-lg">
+<form class="container mx-auto my-64 w-full max-w-lg">
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-      <label
-        class="block uppercase tracking-wide text-gray-700 text-xs font-bold
-        mb-2"
-        for="grid-first-name"
-      >
-        Order Name
-      </label>
       <input
         bind:value="{orderName}"
-        class="appearance-none block w-full bg-gray-200 text-gray-700 border
-        border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none
-        focus:bg-white"
-        id="grid-first-name"
+        class="appearance-none block w-full text-gray-700 border
+        border-black-400 rounded py-3 px-4 leading-tight focus:outline-none
+        focus:bg-white focus:border-gray-500"
         type="text"
-        placeholder="PO 4574"
+        placeholder="Order Name"
       />
       {#if orderName.length == 0}
         <p class="text-red-500 text-xs italic">Please fill out this field.</p>
       {/if}
     </div>
     <div class="w-full md:w-1/2 px-3">
-      <label
-        class="block uppercase tracking-wide text-gray-700 text-xs font-bold
-        mb-2"
-        for="grid-last-name"
-      >
-        Price
-      </label>
       <input
         bind:value="{price}"
-        class="appearance-none block w-32 bg-gray-200 text-gray-700 border
-        border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none
-        focus:bg-white focus:border-gray-500"
-        id="grid-last-name"
+        class="appearance-none block w-32 text-gray-700 border border-black-400
+        rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white
+        focus:border-gray-500"
         type="number"
-        placeholder="$10.00"
+        placeholder="Price"
       />
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full px-3">
-      <label
-        class="block uppercase tracking-wide text-gray-700 text-xs font-bold
-        mb-2"
-        for="grid-password"
-      >
-        Password
-      </label>
-      <input
-        class="appearance-none block w-full bg-gray-200 text-gray-700 border
-        border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none
-        focus:bg-white focus:border-gray-500"
-        id="grid-password"
-        type="password"
-        placeholder="******************"
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <Select
+        class="appearance-none block w-full text-gray-700 rounded py-3 px-4 mb-3
+        leading-tight focus:outline-none focus:bg-white"
+        items="{clients}"
+        bind:selectedValue="{selectedClient}"
+        on:select="{handleSelectClient}"
+        placeholder="Select Client"
       />
-      <p class="text-gray-600 text-xs italic">
-        Make it as long and as crazy as you'd like
-      </p>
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-2">
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label
-        class="block uppercase tracking-wide text-gray-700 text-xs font-bold
-        mb-2"
-        for="grid-city"
-      >
-        City
-      </label>
-      <input
-        class="appearance-none block w-full bg-gray-200 text-gray-700 border
-        border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none
-        focus:bg-white focus:border-gray-500"
-        id="grid-city"
-        type="text"
-        placeholder="Albuquerque"
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <Select
+        class="appearance-none block w-full text-gray-700 rounded py-3 px-4 mb-3
+        leading-tight focus:outline-none focus:bg-white"
+        items="{vendors}"
+        bind:selectedValue="{selectedVendor}"
+        placeholder="Select Vendor"
       />
     </div>
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label
-        class="block uppercase tracking-wide text-gray-700 text-xs font-bold
-        mb-2"
-        for="grid-state"
-      >
-        State
-      </label>
-      <div class="relative">
-        <select
-          class="block appearance-none w-full bg-gray-200 border border-gray-200
-          text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none
-          focus:bg-white focus:border-gray-500"
-          id="grid-state"
-        >
-          <option>New Mexico</option>
-          <option>Missouri</option>
-          <option>Texas</option>
-        </select>
-        <div
-          class="pointer-events-none absolute inset-y-0 right-0 flex
-          items-center px-2 text-gray-700"
-        >
-          <svg
-            class="fill-current h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
-            <path
-              d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757
-              6.586 4.343 8z"
-            ></path>
-          </svg>
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <div class="flex mb-2">
+        <div class="w-1/12> my-1">
+          <Checkbox size="2rem" bind:checked="{rush}" />
+        </div>
+        <div class="w-1/12 my-1 mx-2 text-xl">
+          <label>Rush?</label>
         </div>
       </div>
     </div>
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label
-        class="block uppercase tracking-wide text-gray-700 text-xs font-bold
-        mb-2"
-        for="grid-zip"
+  </div>
+  <div
+    class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center
+    xs:justify-between "
+  >
+    <div class="mt-2 px-2 xs:mt-0 items-center">
+      <button
+        class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold
+        py-2 px-4 rounded-l"
+        on:click="{submit}"
+        type="button"
       >
-        Zip
-      </label>
-      <input
-        class="appearance-none block w-full bg-gray-200 text-gray-700 border
-        border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none
-        focus:bg-white focus:border-gray-500"
-        id="grid-zip"
-        type="text"
-        placeholder="90210"
-      />
+        Add
+      </button>
+      <button
+        class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold
+        py-2 px-4 rounded-r"
+        on:click="{cancel}"
+        type="button"
+      >
+        Cancel
+      </button>
     </div>
   </div>
+
 </form>

@@ -7,8 +7,25 @@
 
   let showEditForm = false;
 
+  let orderName;
+  let price;
+  let selectedClient;
+  let selectedVendor;
+
+  let cancel = () => (showEditForm = false);
+
   const handleRowClick = e => {
-    if (e.detail.target.name) showEditForm = true;
+    if (e.detail.target.name === "editOrderBtn") {
+      orderName = e.detail.row.name;
+      price = e.detail.row.price;
+      selectedClient = {
+        value: "chocolate",
+        label: "🍫 Chocolate",
+        group: "Sweet"
+      };
+      selectedVendor = { value: "cake", label: "🎂 Cake", group: "Sweet" };
+      showEditForm = true;
+    }
   };
 
   let columndata = [
@@ -48,7 +65,7 @@
       field: function(data) {
         return (
           '<div class="py-2">' +
-          '<Button class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l" name="edit_button">Show dialog</Button>' +
+          '<Button name="editOrderBtn" class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l" name="edit_button">Show dialog</Button>' +
           "</div>"
         );
       },
@@ -61,7 +78,7 @@
 <Tailwindcss />
 
 {#if !showEditForm}
-  <div transition:slide>
+  <div transition:slide="{{ duration: 100 }}">
     <Datatable
       rows="{data}"
       title="Orders"
@@ -72,6 +89,6 @@
   </div>
 {:else}
   <div>
-    <Form />
+    <Form {cancel} {orderName} {price} {selectedClient} {selectedVendor} />
   </div>
 {/if}
